@@ -553,11 +553,6 @@
 	status = "okay";
 };
 
-&usb_host0_xhci {
-	dr_mode = "host";
-	status = "okay";
-};
-
 &usb_host0_ohci {
 	status = "okay";
 };
@@ -570,10 +565,10 @@
 	status = "okay";
 };
 
-&usb2phy0_host {
+&u2phy0_host {
 	status = "okay";
 };
 
-&usb2phy0_otg {
+&u2phy0_otg {
 	status = "okay";
 };
