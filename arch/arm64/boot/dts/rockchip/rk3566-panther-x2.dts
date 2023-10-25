@@ -106,6 +106,19 @@
 		vin-supply = <&vcc5v0_sys>;
 	};
 
+        pcie20_3v3: pcie20-3v3-regulator {
+                compatible = "regulator-fixed";
+                enable-active-high;
+                gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_HIGH>;
+                regulator-min-microvolt = <3300000>;
+                regulator-max-microvolt = <3300000>;
+                regulator-name = "pcie20_3v3";
+                startup-delay-us = <5000>;
+                vin-supply = <&vcc5v0_sys>;
+		regulator-always-on;
+		regulator-boot-on;
+        };
+
 	sdio_pwrseq: sdio-pwrseq {
 		status = "okay";
 		compatible = "mmc-pwrseq-simple";
@@ -571,4 +584,12 @@
 
 &u2phy0_otg {
 	status = "okay";
+};
+
+
+&pcie2x1 {
+	reset-gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_HIGH>;
+        disable-gpios = <&gpio3 RK_PC2 GPIO_ACTIVE_HIGH>;
+	vpcie3v3-supply = <&pcie20_3v3>;
+        status = "okay";
 };
